@@ -1,0 +1,766 @@
+{
+	"info": {
+		"_postman_id": "25a72482-2247-4096-88a4-27d14ad6e84a",
+		"name": "Groffers Referral",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"pratiyush40\",\n    \"password\": \"1234\",\n    \"email\": \"pratiyushmishra40@gmail.com\",\n    \"referral\": \"AkHQe6CWQjHeCFeUE1n1\",\n    \"hasReferral\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/api/user/signup",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"user",
+						"signup"
+					]
+				},
+				"description": "## API to sign up with referral code and give incentives to both the referee and referred user. User can also sign up without the referral code as well."
+			},
+			"response": [
+				{
+					"name": "Create User (With no referral)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"pratiyush20\",\n    \"password\": \"1234\",\n    \"email\": \"pratiyushmishra20@gmail.com\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/user/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "294"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"126-NatuxVTctLnGwGWglHidLVnQg3E\""
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "23.842ms"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 02:54:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Successfully Signed In\",\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoicHJhdGl5dXNoMjAiLCJpYXQiOjE2MzgwNjgwNzQsImV4cCI6MTYzODI0MDg3NCwiaXNzIjoicmVmZXJyYWwifQ.jWtx0gUhAoLHOnYAj4ZbgTXzWGj-s3iclXMywU-lISI\",\n    \"status\": 200,\n    \"userId\": \"61a2ef6a4b645719d239a817\",\n    \"expiresIn\": 172800\n}"
+				},
+				{
+					"name": "Create User (With a referral)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"pratiyush20\",\n    \"password\": \"1234\",\n    \"email\": \"pratiyushmishra20@gmail.com\",\n    \"referral\": \"AkHQe6CWQjHeCFeUE1n1\",\n    \"hasReferral\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/user/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"user",
+								"signup"
+							]
+						}
+					},
+					"_postman_previewlanguage": null,
+					"header": null,
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Get Referral Code",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoicHJhdGl5dXNoMzAiLCJpYXQiOjE2MzgwNjgxNTIsImV4cCI6MTYzODI0MDk1MiwiaXNzIjoicmVmZXJyYWwifQ.fnGw66ZRGmQvGPCe8YQK99RWVJOUa1rCJOQdGgneQtE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/api/user/referral",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"user",
+						"referral"
+					]
+				},
+				"description": "## API to get the personalised referral code for the user. Bearer token needs to be passed."
+			},
+			"response": [
+				{
+					"name": "Get Referral Code",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:7000/api/user/referral",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"user",
+								"referral"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "39"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"27-KlHMyA9xXLXQrLwt4w0EdG0YNmU\""
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "9.871ms"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 03:40:11 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"referralCode\": \"AkHQe6CWQjHeCFeUE1n1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Enrol/Withdraw Referral",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoicHJhdGl5dXNoMzAiLCJpYXQiOjE2MzgwNjgxNTIsImV4cCI6MTYzODI0MDk1MiwiaXNzIjoicmVmZXJyYWwifQ.fnGw66ZRGmQvGPCe8YQK99RWVJOUa1rCJOQdGgneQtE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"isReferral\": true\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/api/user/updateReferral",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"user",
+						"updateReferral"
+					]
+				},
+				"description": "## API to enrol into or withdraw from the Referral System\n#### Pass the variable isReferral as true to enrol and false to withdraw.\n#### Needs bearer token to be passed"
+			},
+			"response": [
+				{
+					"name": "Enrol Referral",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isReferral\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/user/updateReferral",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"user",
+								"updateReferral"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "375"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"177-SL4wZ29oNgJM23/xY8wwnH3kUQQ\""
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "17.859ms"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 03:56:25 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"61a2ef364b645719d239a813\",\n    \"username\": \"pratiyush30\",\n    \"password\": \"1234\",\n    \"email\": \"pratiyushmishra30@gmail.com\",\n    \"referralCode\": \"AkHQe6CWQjHeCFeUE1n1\",\n    \"score\": 10,\n    \"isReferral\": true,\n    \"totalReferrals\": 1,\n    \"referralHistoryUsers\": [\n        \"p***************0@gmail.com\"\n    ],\n    \"referralHistoryIncentives\": [\n        20\n    ],\n    \"createdAt\": \"2021-11-28T02:53:42.063Z\",\n    \"updatedAt\": \"2021-11-28T02:54:34.908Z\",\n    \"__v\": 0\n}"
+				},
+				{
+					"name": "Withdraw Referral",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"isReferral\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/user/updateReferral",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"user",
+								"updateReferral"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "376"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"178-skc/KP2mQ0aWppyRoTkOI9YYYkc\""
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "15.513ms"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 03:58:16 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"61a2ef364b645719d239a813\",\n    \"username\": \"pratiyush30\",\n    \"password\": \"1234\",\n    \"email\": \"pratiyushmishra30@gmail.com\",\n    \"referralCode\": \"AkHQe6CWQjHeCFeUE1n1\",\n    \"score\": 10,\n    \"isReferral\": false,\n    \"totalReferrals\": 1,\n    \"referralHistoryUsers\": [\n        \"p***************0@gmail.com\"\n    ],\n    \"referralHistoryIncentives\": [\n        20\n    ],\n    \"createdAt\": \"2021-11-28T02:53:42.063Z\",\n    \"updatedAt\": \"2021-11-28T03:56:25.192Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Referral History",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoicHJhdGl5dXNoMzAiLCJpYXQiOjE2MzgwNjgxNTIsImV4cCI6MTYzODI0MDk1MiwiaXNzIjoicmVmZXJyYWwifQ.fnGw66ZRGmQvGPCe8YQK99RWVJOUa1rCJOQdGgneQtE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/api/user/referralIncentives",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"user",
+						"referralIncentives"
+					]
+				},
+				"description": "## API to get user's referral history and the incentives.\n#### Bearer token needs to be passed"
+			},
+			"response": [
+				{
+					"name": "Get Referral History",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:7000/api/user/referralIncentives",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"user",
+								"referralIncentives"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "57"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"39-PEHvqKNl3gXecHR3jYaD+TCuw+8\""
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "3.437ms"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 03:57:06 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"emaiils\": [\n        \"p***************0@gmail.com\"\n    ],\n    \"scores\": [\n        20\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Milestones",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoicHJhdGl5dXNoMzAiLCJpYXQiOjE2MzgwNjgxNTIsImV4cCI6MTYzODI0MDk1MiwiaXNzIjoicmVmZXJyYWwifQ.fnGw66ZRGmQvGPCe8YQK99RWVJOUa1rCJOQdGgneQtE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:7000/api/user/milestones",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"user",
+						"milestones"
+					]
+				},
+				"description": "## API to get the milestones.\n#### Displays the total number of people referred so far, current milestone, the milestones to achieve, required referrals to achieve those milestones and the reward on achieving the milestone.\n#### Bearer token needs to be passed"
+			},
+			"response": [
+				{
+					"name": "Get Milestones",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:7000/api/user/milestones",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"user",
+								"milestones"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "400"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"190-ID7V8X5c3CWPuus0RzT3NrGL6N8\""
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "5.224ms"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 04:56:56 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"totalReferred\": 10,\n    \"milestone\": \"Pupil\",\n    \"milestonesToAchieve\": [\n        {\n            \"milestoneName\": \"Apprentice\",\n            \"requiredReferrals\": 10,\n            \"reward\": 500\n        },\n        {\n            \"milestoneName\": \"Specialist\",\n            \"requiredReferrals\": 40,\n            \"reward\": 2000\n        },\n        {\n            \"milestoneName\": \"Expert\",\n            \"requiredReferrals\": 90,\n            \"reward\": 5000\n        },\n        {\n            \"milestoneName\": \"Master\",\n            \"requiredReferrals\": 190,\n            \"reward\": 10000\n        },\n        {\n            \"milestoneName\": \"Grandmaster\",\n            \"requiredReferrals\": 490,\n            \"reward\": 20000\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"username\": \"pratiyush30\",\n    \"password\": \"1234\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:7000/api/user/login",
+					"host": [
+						"localhost"
+					],
+					"port": "7000",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				},
+				"description": "## API to login and generate refresh token\n#### The token generated is valid for 2 days."
+			},
+			"response": [
+				{
+					"name": "User Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"pratiyush30\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:7000/api/user/login",
+							"host": [
+								"localhost"
+							],
+							"port": "7000",
+							"path": [
+								"api",
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "x-frame-options",
+							"value": "SAMEORIGIN"
+						},
+						{
+							"key": "x-xss-protection",
+							"value": "1; mode=block"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "289"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"121-UZN3vjnDCk4IPbRU+5yPUtwvJbg\""
+						},
+						{
+							"key": "X-Response-Time",
+							"value": "5.664ms"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 28 Nov 2021 04:02:49 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Successfull Login\",\n    \"status\": 200,\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoicHJhdGl5dXNoMzAiLCJpYXQiOjE2MzgwNzIxNjksImV4cCI6MTYzODI0NDk2OSwiaXNzIjoicmVmZXJyYWwifQ.A2JjZrRtgA-30xm-B9cvQiX2p6_QML2wiHjprLzsEYQ\",\n    \"userId\": \"61a2ef364b645719d239a813\",\n    \"expiresIn\": 172800\n}"
+				}
+			]
+		}
+	]
+}
